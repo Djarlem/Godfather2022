@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mirror
   - Prism
+  - Beam
   layers:
   - Default
   - TransparentFX

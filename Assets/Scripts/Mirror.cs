@@ -44,4 +44,14 @@ public class Mirror : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Beam") {
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Reflect(collision.gameObject.transform.eulerAngles));
+        }
+    }
+    public Vector3 Reflect(Vector3 inDir) {
+        Debug.Log(Vector3.Reflect(inDir, transform.eulerAngles));
+        return Vector3.Reflect(inDir, transform.eulerAngles);
+    }
 }
