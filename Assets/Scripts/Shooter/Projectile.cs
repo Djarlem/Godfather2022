@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour {
     [SerializeField] public float angleDirection;
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right;
+        rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right * speed;
     }
 
     static public void Spawn(Projectile prefab, float direction, Vector3 position) {
