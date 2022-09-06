@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8960134376113071144}
   - component: {fileID: 8510160053295396707}
+  - component: {fileID: -9064755144762175925}
   m_Layer: 0
   m_Name: Prism
   m_TagString: Prism
@@ -136,6 +137,19 @@ MonoBehaviour:
     direction: {x: 0, y: 0}
   - position: {x: 0, y: 0}
     direction: {x: 0, y: 0}
+--- !u!65 &-9064755144762175925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315250587197158924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6376044065193398807
 GameObject:
   m_ObjectHideFlags: 0
