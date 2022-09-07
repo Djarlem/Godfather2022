@@ -10,9 +10,11 @@ public class Projectile : MonoBehaviour {
     [SerializeField] public float angleDirection;
     [SerializeField] private float beamDuration = 10f;
     [SerializeField] private UnityEvent onBeamHit;
+    [SerializeField] public int nbBounce = 5;
 
     private float duration;
     private Vector2 currentVelocity;
+    public bool isFromPrism = false;
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right * speed;
@@ -43,9 +45,20 @@ public class Projectile : MonoBehaviour {
             rb.velocity = Vector2.zero;
             //var newAngle = 180 * Mathf.Atan2(newDir.x, newDir.y) / Mathf.PI;
             rb.velocity = newDir;
+            nbBounce--;
+            if (nbBounce <= 0) {
+                rb.velocity = Vector2.zero;
+                StartCoroutine(Destruction(GetComponent<TrailRenderer>().time));
+            }
         }
         onBeamHit?.Invoke();
     }
+
+    IEnumerator Destruction(float duration) {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
+    }
+
 
     private void OnHit() {
         Debug.Log("BeamHit");

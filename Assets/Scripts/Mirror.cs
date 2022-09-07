@@ -14,7 +14,7 @@ public class Mirror : MonoBehaviour
     [SerializeField] private float rotationAcoupValue;
     private bool isPressed = false;
     [SerializeField] private UnityEvent onMirrorHit;
-
+    [SerializeField] private KeyCode key;
     private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,12 @@ public class Mirror : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(key)) {
+            Vector3 rotation = new Vector3(0, 0, 0);
+            rotation.z = transform.eulerAngles.z + rotationAcoupValue;
+            transform.eulerAngles = rotation;
+        }
+
         if( type == mirrorType.Continue) {
             if (Input.GetKeyDown(KeyCode.W)) {
                 isPressed = true;

@@ -131,6 +131,7 @@ MonoBehaviour:
   onMirrorHit:
     m_PersistentCalls:
       m_Calls: []
+  key: 330
 --- !u!82 &-7488274275805126126
 AudioSource:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9735856c5b63b4142a26bace80a83bda, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
