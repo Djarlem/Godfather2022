@@ -1,19 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Projectile : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float speed;
     [SerializeField] public float angleDirection;
+    [SerializeField] private float beamDuration = 10f;
+    [SerializeField] private UnityEvent onBeamHit;
+
+    private float duration;
     private Vector2 currentVelocity;
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right * speed;
+        duration = beamDuration;
+        onBeamHit.AddListener(OnHit);
     }
 
     private void FixedUpdate() {
         currentVelocity = rb.velocity;
+    }
+
+    private void Update() {
+        duration -= Time.deltaTime;
+        if (duration <= 0)
+            Destroy(gameObject);
     }
 
     static public void Spawn(Projectile prefab, float direction, Vector3 position) {
@@ -30,9 +44,10 @@ public class Projectile : MonoBehaviour {
             //var newAngle = 180 * Mathf.Atan2(newDir.x, newDir.y) / Mathf.PI;
             rb.velocity = newDir;
         }
+        onBeamHit?.Invoke();
+    }
 
-        if (collision.gameObject.tag == "Prism") {
-            Debug.Log("prism");
-        }
+    private void OnHit() {
+        Debug.Log("BeamHit");
     }
 }

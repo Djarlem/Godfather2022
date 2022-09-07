@@ -26,10 +26,13 @@ public class Prism : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Beam") {
-            Destroy(collision.gameObject);
             for (int i = 0; i < exitsList.Count; i++) {
                 Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position + transform.position);
             }
+
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            StartCoroutine(Destruction(collision.gameObject, collision.gameObject.GetComponent<TrailRenderer>().time));
+            //Destroy(collision.gameObject);
         }
     }
 
@@ -37,5 +40,12 @@ public class Prism : MonoBehaviour
         Projectile newProjectile = Instantiate(prefab);
         newProjectile.transform.position = position;
         newProjectile.angleDirection = direction;
+    }
+
+    IEnumerator Destruction(GameObject beam, float duration) {
+        yield return new WaitForSeconds(duration);
+        Destroy(beam);
+        Destroy(gameObject);
+        yield return null;
     }
 }

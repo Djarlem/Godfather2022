@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum mirrorType {
     Continue,
@@ -12,10 +13,11 @@ public class Mirror : MonoBehaviour
     [SerializeField] private float rotationContinueSpeed;
     [SerializeField] private float rotationAcoupValue;
     private bool isPressed = false;
+    [SerializeField] private UnityEvent onMirrorHit;
     // Start is called before the first frame update
     void Start()
     {
-        
+        onMirrorHit.AddListener(MirrorHit);
     }
 
     // Update is called once per frame
@@ -46,7 +48,12 @@ public class Mirror : MonoBehaviour
     }
 
     public Vector2 Reflect(Vector3 inDir, Vector3 inNormal) {
-        Debug.LogFormat("IN DIR: {0} | IN NORMAL: {1} | NEW DIR: {2}", inDir, inNormal, Vector2.Reflect(inDir, inNormal));
+        onMirrorHit?.Invoke();
+        //Debug.LogFormat("IN DIR: {0} | IN NORMAL: {1} | NEW DIR: {2}", inDir, inNormal, Vector2.Reflect(inDir, inNormal));
         return Vector2.Reflect(inDir, inNormal);
+    }
+
+    private void MirrorHit() {
+        Debug.Log("Mirror hit");
     }
 }
