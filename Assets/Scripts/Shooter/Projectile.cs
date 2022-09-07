@@ -23,11 +23,11 @@ public class Projectile : MonoBehaviour {
         if (collision.gameObject.tag == "Mirror") {
             var normal = collision.contacts[0].normal;
             var currentDir = (transform.position - spawnPos).normalized;
-            Vector3 newDir = collision.gameObject.GetComponent<Mirror>().Reflect(currentDir, normal);
-            //Vector3 newDir = new Vector3(currentDir.x * -1, currentDir.y * -1, 0);
+            Vector2 newDir = collision.gameObject.GetComponent<Mirror>().Reflect(currentDir, normal);
+            //Vector2 newDir = new Vector3(currentDir.x * -1, currentDir.y * -1);
             rb.velocity = Vector2.zero;
             var newAngle = 180 * Mathf.Atan2(newDir.x, newDir.y) / Mathf.PI;
-            Vector3 vec = new Vector3(1, 1, 0);
+            Vector2 vec = new Vector3(1, 1);
             rb.velocity = Quaternion.Euler(0, 0, newAngle) * vec * speed;
             spawnPos = transform.position;
         }

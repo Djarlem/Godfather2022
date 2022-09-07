@@ -45,8 +45,8 @@ public class Mirror : MonoBehaviour
         }
     }
 
-    public Vector3 Reflect(Vector3 inDir, Vector3 inNormal) {
-        Debug.LogFormat("IN DIR: {0} | IN NORMAL: {1} | NEW DIR: {2}", inDir, inNormal, Vector3.Reflect(inDir, inNormal));
-        return Vector3.Reflect(inDir, inNormal);
+    public Vector2 Reflect(Vector3 inDir, Vector3 inNormal) {
+        Debug.LogFormat("IN DIR: {0} | IN NORMAL: {1} | NEW DIR: {2}", inDir, inNormal, Vector2.Reflect(inDir, inNormal));
+        return Vector2.Reflect(inDir, inNormal);
     }
 }
