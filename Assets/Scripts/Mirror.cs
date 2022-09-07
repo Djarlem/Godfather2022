@@ -14,10 +14,13 @@ public class Mirror : MonoBehaviour
     [SerializeField] private float rotationAcoupValue;
     private bool isPressed = false;
     [SerializeField] private UnityEvent onMirrorHit;
+
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         onMirrorHit.AddListener(MirrorHit);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,6 @@ public class Mirror : MonoBehaviour
     }
 
     private void MirrorHit() {
-        Debug.Log("Mirror hit");
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }

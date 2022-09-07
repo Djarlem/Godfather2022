@@ -13,8 +13,10 @@ public class Shooter : Singleton<Shooter> {
 
     [SerializeField] private UnityEvent onShoot;
 
+    private AudioSource audioSource;
     private void Start() {
         onShoot.AddListener(Shoot);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -29,6 +31,6 @@ public class Shooter : Singleton<Shooter> {
     }
 
     private void Shoot() {
-        Debug.Log("Shoot");
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }
