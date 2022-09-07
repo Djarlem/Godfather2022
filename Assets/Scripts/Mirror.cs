@@ -22,11 +22,11 @@ public class Mirror : MonoBehaviour
     void Update()
     {
         if( type == mirrorType.Continue) {
-            if (Input.GetKeyDown(KeyCode.A)) {
+            if (Input.GetKeyDown(KeyCode.W)) {
                 isPressed = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.A)) {
+            if (Input.GetKeyUp(KeyCode.W)) {
                 isPressed = false;
             }
 
@@ -45,14 +45,8 @@ public class Mirror : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Beam") {
-            collision.gameObject.transform.eulerAngles = Reflect(collision.gameObject.transform.eulerAngles);
-        }
-    }
-    public Vector3 Reflect(Vector3 inDir) {
-        Vector3 normal = new Vector3(0,0,transform.eulerAngles.z + 90);
-        Debug.Log(Vector3.Reflect(inDir, normal));
-        return Vector3.Reflect(inDir, normal);
+    public Vector3 Reflect(Vector3 inDir, Vector3 inNormal) {
+        Debug.LogFormat("IN DIR: {0} | IN NORMAL: {1} | NEW DIR: {2}", inDir, inNormal, Vector3.Reflect(inDir, inNormal));
+        return Vector3.Reflect(inDir, inNormal);
     }
 }
