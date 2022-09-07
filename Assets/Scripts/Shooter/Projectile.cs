@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right * speed;
-        spawnPos = transform.position;
     }
 
     private void FixedUpdate() {
