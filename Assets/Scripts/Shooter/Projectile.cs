@@ -30,5 +30,9 @@ public class Projectile : MonoBehaviour {
             //var newAngle = 180 * Mathf.Atan2(newDir.x, newDir.y) / Mathf.PI;
             rb.velocity = newDir;
         }
+
+        if (collision.gameObject.tag == "Prism") {
+            Debug.Log("prism");
+        }
     }
 }

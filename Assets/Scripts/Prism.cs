@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public struct exit {
-    public Vector2 position;
+    public Vector3 position;
     public float angle;
 }
 public class Prism : MonoBehaviour
@@ -26,8 +26,9 @@ public class Prism : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Beam") {
+            Destroy(collision.gameObject);
             for (int i = 0; i < exitsList.Count; i++) {
-                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position);
+                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position + transform.position);
             }
         }
     }
