@@ -12,13 +12,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - NoEnemy
+  - Trail
   - Water
   - UI
   - Mirror
   - Vaisseau
   - Proj
-  - 
+  - Enemy
   - 
   - 
   - 

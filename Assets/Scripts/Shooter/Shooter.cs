@@ -43,4 +43,13 @@ public class Shooter : Singleton<Shooter> {
         Projectile.Spawn(_projectilePrefab, transform.rotation.eulerAngles.z, transform.position + transform.right * _distProj);
         audioSource.PlayOneShot(audioSource.clip);
     }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Enemy") {
+            Hit();
+        }
+    }
+
+    public void Hit() {
+        Debug.Log("Hit");
+    }
 }
