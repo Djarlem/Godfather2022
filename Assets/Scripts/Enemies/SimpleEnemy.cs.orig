@@ -32,8 +32,12 @@ public class SimpleEnemy : MonoBehaviour {
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Beam") {
-            Score.Instance.ScoreUp();
+<<<<<<< HEAD
             StartCoroutine(Destruction());
+=======
+            Score.Instance.ScoreUp();
+            Destroy(gameObject);
+>>>>>>> afbeefd6b231faad8d4fb307dcc18fd1116726c3
         }
 
         if (collision.gameObject.tag == "Player")
