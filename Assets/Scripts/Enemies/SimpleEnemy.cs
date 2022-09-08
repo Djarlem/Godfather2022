@@ -25,6 +25,11 @@ public class SimpleEnemy : MonoBehaviour {
         if (collision.transform.tag == "Beam") {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.instance?.LoseLife();
+        }
     }
 
 }

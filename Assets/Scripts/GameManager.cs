@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         life--;
-        lifeSprites[life - 1].SetActive(false);
+        lifeSprites[life - 1]?.SetActive(false);
         if (life <= 0)
             GameOver();
     }
