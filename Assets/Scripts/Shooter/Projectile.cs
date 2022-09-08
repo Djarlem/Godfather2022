@@ -64,6 +64,6 @@ public class Projectile : MonoBehaviour {
 
 
     private void OnHit() {
-        Debug.Log("BeamHit");
+       // Debug.Log("BeamHit");
     }
 }

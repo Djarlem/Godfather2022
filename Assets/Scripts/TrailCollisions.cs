@@ -19,15 +19,12 @@ public class TrailCollisions : MonoBehaviour {
 
     //Gets from unused pool or creates one if none in pool
     EdgeCollider2D GetValidCollider() {
-        EdgeCollider2D validCollider;
-        if (unusedColliders.Count > 0) {
-            validCollider = unusedColliders[0];
-            validCollider.enabled = true;
-            unusedColliders.RemoveAt(0);
-        } else {
-            validCollider = new GameObject("TrailCollider", typeof(EdgeCollider2D)).GetComponent<EdgeCollider2D>();
-        }
+        EdgeCollider2D validCollider = new GameObject("TrailCollider", typeof(EdgeCollider2D)).GetComponent<EdgeCollider2D>();
         validCollider.gameObject.layer = LayerMask.NameToLayer("Trail");
+        validCollider.tag = "Beam";
+        validCollider.isTrigger = true;
+        validCollider.transform.parent = transform;
+        //validCollider.edgeRadius =
         return validCollider;
     }
 
