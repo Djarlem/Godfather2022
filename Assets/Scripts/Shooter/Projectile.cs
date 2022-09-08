@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour {
     [SerializeField] public float angleDirection;
     [SerializeField] private float beamDuration = 10f;
     [SerializeField] private UnityEvent onBeamHit;
+    [SerializeField] private TrailRenderer _trail;
     [SerializeField] public int nbBounce = 5;
 
     private float duration;
@@ -20,6 +21,7 @@ public class Projectile : MonoBehaviour {
         rb.velocity = Quaternion.Euler(0, 0, angleDirection) * Vector3.right * speed;
         duration = beamDuration;
         onBeamHit.AddListener(OnHit);
+        _trail = transform.GetChild(0).GetComponent<TrailRenderer>();
     }
 
     private void FixedUpdate() {
@@ -28,8 +30,9 @@ public class Projectile : MonoBehaviour {
 
     private void Update() {
         duration -= Time.deltaTime;
-        if (duration <= 0)
+        if (duration <= 0) {
             Destroy(gameObject);
+        }
     }
 
     static public void Spawn(Projectile prefab, float direction, Vector3 position) {
@@ -48,7 +51,7 @@ public class Projectile : MonoBehaviour {
             nbBounce--;
             if (nbBounce <= 0) {
                 rb.velocity = Vector2.zero;
-                StartCoroutine(Destruction(GetComponent<TrailRenderer>().time));
+                StartCoroutine(Destruction(_trail.time));
             }
         }
         onBeamHit?.Invoke();

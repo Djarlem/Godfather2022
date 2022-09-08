@@ -7,8 +7,7 @@ public enum mirrorType {
     Continue,
     Acoup
 }
-public class Mirror : MonoBehaviour
-{
+public class Mirror : MonoBehaviour {
     [SerializeField] private mirrorType type;
     [SerializeField] private float rotationContinueSpeed;
     [SerializeField] private float rotationAcoupValue;
@@ -17,22 +16,23 @@ public class Mirror : MonoBehaviour
     [SerializeField] private KeyCode key;
     private AudioSource audioSource;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         onMirrorHit.AddListener(MirrorHit);
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+       
+        if (Input.GetButton("Fire1")) {
+        }
         if (Input.GetKeyDown(key)) {
             Vector3 rotation = new Vector3(0, 0, 0);
             rotation.z = transform.eulerAngles.z + rotationAcoupValue;
             transform.eulerAngles = rotation;
         }
 
-        if( type == mirrorType.Continue) {
+        if (type == mirrorType.Continue) {
             if (Input.GetKeyDown(KeyCode.W)) {
                 isPressed = true;
             }
