@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f2055d8b152f5499ad564c2605fbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   spriteRenderer: {fileID: 2830940733394924913}
   explosionSprite:
   - {fileID: 21300000, guid: 19bdf1514848ae44183d20a28e554610, type: 3}
@@ -142,6 +141,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 319c7d1d7d771954da5e786368c90f22, type: 3}
   - {fileID: 21300000, guid: e1f10257a7f44e54ba5f9e3ad1d5ebf4, type: 3}
   - {fileID: 21300000, guid: 23f8ba83c6e319048b9d5174a23b0435, type: 3}
+  speed: 2
+  speedToPlayer: 0
+  prismSpawnChance: 0.05
+  instance: {fileID: 8510160053295396707, guid: 2da498c4ccaeac245abdbfb5836c65ac, type: 3}
 --- !u!61 &6268425028425097425
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -461,6 +461,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Affecter by Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b13db8ed2aad7748be28b0ba2834d87, type: 2}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 650562964733687471, guid: 1b13db8ed2aad7748be28b0ba2834d87, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
 --- !u!4 &402368678 stripped
@@ -1175,11 +1183,17 @@ MonoBehaviour:
   - 6
   - 6
   _stack:
-  - 5
-  - 5
+  - {x: 1, y: 5}
+  - {x: 1, y: 5}
+  _speed:
+  - {x: 0.5, y: 2}
+  - {x: 0.1, y: 1}
   _waitBetweenSpawn:
   - 0.3
   - 0.3
+  time: 0
+  difficultyRatio: 100
+  difficulty: 0
 --- !u!4 &1286174154
 Transform:
   m_ObjectHideFlags: 0

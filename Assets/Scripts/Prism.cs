@@ -33,16 +33,16 @@ public class Prism : MonoBehaviour
             Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position.position);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         var projectile = collision.gameObject.GetComponent<Projectile>();
         if (collision.gameObject.tag == "Beam" && !projectile.isFromPrism) {
             for (int i = 0; i < exitsList.Count; i++) {
-                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position.position + transform.position);
+                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position.position);
             }
 
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             onPrismHit.Invoke();
-            StartCoroutine(Destruction(collision.gameObject, collision.gameObject.GetComponent<TrailRenderer>().time));
+            StartCoroutine(Destruction(collision.gameObject, collision.gameObject.transform.GetChild(0).GetComponent<TrailRenderer>().time));
         }
     }
 

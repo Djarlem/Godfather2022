@@ -6,11 +6,14 @@ using UnityEngine;
 public class SimpleEnemy : MonoBehaviour {
     protected Vector2 direction;
     protected Vector3 shooterPos;
-    [SerializeField] protected float speed = 2;
     private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite>explosionSprite = new List<Sprite>();
     private AudioSource audioSource;
+    [SerializeField] public float speed = 2;
+    [SerializeField] public float speedToPlayer;
+    [SerializeField] public float prismSpawnChance;
+    [SerializeField] Prism instance;
 
     private void Start()
     {
@@ -43,6 +46,10 @@ public class SimpleEnemy : MonoBehaviour {
     }
     IEnumerator Destruction()
     {
+        float random = UnityEngine.Random.Range(0f, 1f);
+        if (prismSpawnChance > random) {
+            SpawnPrism();
+        }
         spriteRenderer.sprite = null;
         audioSource.PlayOneShot(audioSource.clip);
         for (int i = 0; i < explosionSprite.Count; i++)
@@ -55,4 +62,9 @@ public class SimpleEnemy : MonoBehaviour {
         Destroy(gameObject);
         yield return null;
     }
+
+    void SpawnPrism() {
+        Instantiate(instance, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 120f)));
+    }
 }
+
