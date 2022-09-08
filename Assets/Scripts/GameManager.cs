@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int life = 3;
     [SerializeField] private UnityEvent onGameOver;
     private AudioSource audioSource;
-
+    [SerializeField] private List<GameObject> lifeSprites = new List<GameObject>();
+    private int numberOfLife;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -23,19 +24,24 @@ public class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         onGameOver.AddListener(OnGameOver);
-
+        numberOfLife = life;
     }
 
     public void LoseLife()
     {
         life--;
+        lifeSprites[life - 1].SetActive(false);
         if (life <= 0)
             GameOver();
     }
 
-    public void GetLife()
+    public void ResetLife()
     {
-        life++;
+        life = numberOfLife;
+        foreach (GameObject lifeSprite in lifeSprites)
+        {
+            lifeSprite.SetActive(true);
+        }
     }
 
     private void OnGameOver()
