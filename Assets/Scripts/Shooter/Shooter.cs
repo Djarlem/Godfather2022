@@ -50,6 +50,6 @@ public class Shooter : Singleton<Shooter> {
     }
 
     public void Hit() {
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
     }
 }

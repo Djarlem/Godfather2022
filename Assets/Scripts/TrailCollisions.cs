@@ -23,7 +23,7 @@ public class TrailCollisions : MonoBehaviour {
         validCollider.gameObject.layer = LayerMask.NameToLayer("Trail");
         validCollider.tag = "Beam";
         validCollider.isTrigger = true;
-        validCollider.transform.parent = transform;
+        //validCollider.transform.parent = transform;
         //validCollider.edgeRadius =
         return validCollider;
     }
