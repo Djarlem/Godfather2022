@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpiralingEnemy : SimpleEnemy
 {
+    [SerializeField] protected float speedToPlayer;
     // Update is called once per frame
     protected override void Update()
     {
@@ -21,6 +22,6 @@ public class SpiralingEnemy : SimpleEnemy
         base.FixedUpdate();
         direction = shooterPos - transform.position;
         direction.Normalize();
-        transform.position += new Vector3(direction.x * (speed / 50), direction.y * (speed / 50), 0) * Time.fixedDeltaTime;
+        transform.position += new Vector3(direction.x * speedToPlayer, direction.y * speedToPlayer, 0) * Time.fixedDeltaTime;
     }
 }
