@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UnityEvent onGameOver;
     private AudioSource audioSource;
     [SerializeField] private List<GameObject> lifeSprites = new List<GameObject>();
+    [SerializeField] private GameObject gameOverScreen;
     private int numberOfLife;
     void Awake()
     {
@@ -52,5 +54,13 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         onGameOver?.Invoke();
+        Time.timeScale = 0;
+        gameOverScreen.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 }

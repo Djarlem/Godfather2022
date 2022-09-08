@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [System.Serializable]
 public struct exit {
-    public Vector3 position;
+    public Transform position;
     public float angle;
 }
 public class Prism : MonoBehaviour
@@ -30,14 +30,14 @@ public class Prism : MonoBehaviour
 
     private void TestSpawn() {
         for (int i = 0; i < exitsList.Count; i++) {
-            Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position);
+            Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position.position);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         var projectile = collision.gameObject.GetComponent<Projectile>();
         if (collision.gameObject.tag == "Beam" && !projectile.isFromPrism) {
             for (int i = 0; i < exitsList.Count; i++) {
-                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position + transform.position);
+                Spawn(beamPrefab, exitsList[i].angle, exitsList[i].position.position + transform.position);
             }
 
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
