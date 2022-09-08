@@ -7,7 +7,16 @@ public class SimpleEnemy : MonoBehaviour {
     protected Vector2 direction;
     protected Vector3 shooterPos;
     [SerializeField] protected float speed = 2;
+    private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<Sprite>explosionSprite = new List<Sprite>();
+    private AudioSource audioSource;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     protected virtual void Update() {
         shooterPos = Shooter.Instance.transform.position;
@@ -23,7 +32,7 @@ public class SimpleEnemy : MonoBehaviour {
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Beam") {
-            Destroy(gameObject);
+            StartCoroutine(Destruction());
         }
 
         if (collision.gameObject.tag == "Player")
@@ -31,5 +40,18 @@ public class SimpleEnemy : MonoBehaviour {
             GameManager.instance?.LoseLife();
         }
     }
+    IEnumerator Destruction()
+    {
+        spriteRenderer.sprite = null;
+        audioSource.PlayOneShot(audioSource.clip);
+        for (int i = 0; i < explosionSprite.Count; i++)
+        {
+            spriteRenderer.sprite = explosionSprite[i];
+            yield return new WaitForSeconds(0.1f);
 
+        }
+
+        Destroy(gameObject);
+        yield return null;
+    }
 }
