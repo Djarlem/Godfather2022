@@ -1402,6 +1402,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Affecter by Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_text
+      value: 0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_fontSize
+      value: 20.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e12e45c93ddb728498d71dce9595869a, type: 2}
+    - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5335242204940404574, guid: e12e45c93ddb728498d71dce9595869a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
 --- !u!1001 &944706298411291199

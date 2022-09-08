@@ -23,6 +23,7 @@ public class SimpleEnemy : MonoBehaviour {
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Beam") {
+            Score.Instance.ScoreUp();
             Destroy(gameObject);
         }
 
