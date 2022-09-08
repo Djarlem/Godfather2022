@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7386995881064061115}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafd9eda52349db4d99ce0075a9ae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -3532114645996015873, guid: 1dd0a76975d36e24eb056ba59eb27c2e, type: 3}
-  rotation: 0
-  rotationSpeed: 1
-  distProj: 1
+  _projectilePrefab: {fileID: 0}
+  _rotationSpeed: 0
+  _distProj: 0
+  _shootRate: 0
   onShoot:
     m_PersistentCalls:
       m_Calls: []

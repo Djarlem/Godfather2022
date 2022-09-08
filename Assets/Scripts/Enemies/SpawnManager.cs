@@ -23,9 +23,17 @@ public class SpawnManager : MonoBehaviour {
         float x = Random.Range(-1f, 1f);
         float y = Random.Range(-1f, 1f);
         Vector3 position = new Vector3(x, y, 0f).normalized * _spawnDist[prefab];
-        for (int i = 0; i < _stack[prefab]; i++) {
-            SimpleEnemy newEnemy = Instantiate(enemiesPrefabs[prefab], transform.position + position, Quaternion.Euler(0, 0, 0));
-            yield return new WaitForSeconds(_waitBetweenSpawn[prefab]);
+        if (prefab == 0) {
+            for (int i = 0; i < _stack[prefab]; i++) {
+                Vector3 right = Quaternion.Euler(0, 0, 90) * (transform.position - position).normalized;
+                SimpleEnemy newEnemy = Instantiate(enemiesPrefabs[prefab], transform.position + position + 0.7f * i * right - 0.7f * _stack[prefab] / 2 * right, Quaternion.Euler(0, 0, 0));
+            }
+            yield return null;
+        } else {
+            for (int i = 0; i < _stack[prefab]; i++) {
+                SimpleEnemy newEnemy = Instantiate(enemiesPrefabs[prefab], transform.position + position, Quaternion.Euler(0, 0, 0));
+                yield return new WaitForSeconds(_waitBetweenSpawn[prefab]);
+            }
         }
     }
 
