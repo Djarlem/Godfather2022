@@ -27,6 +27,7 @@ public class TrailCollisions : MonoBehaviour {
         } else {
             validCollider = new GameObject("TrailCollider", typeof(EdgeCollider2D)).GetComponent<EdgeCollider2D>();
         }
+        validCollider.gameObject.layer = LayerMask.NameToLayer("Trail");
         return validCollider;
     }
 

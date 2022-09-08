@@ -108,6 +108,7 @@ MonoBehaviour:
   onBeamHit:
     m_PersistentCalls:
       m_Calls: []
+  _trail: {fileID: 0}
   nbBounce: 10
   isFromPrism: 0
 --- !u!50 &9131290782479496450
@@ -255,7 +256,7 @@ GameObject:
   - component: {fileID: 6061380995927554543}
   - component: {fileID: 5154193516341545833}
   m_Layer: 3
-  m_Name: GameObject
+  m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
