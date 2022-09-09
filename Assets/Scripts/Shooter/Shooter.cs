@@ -20,6 +20,8 @@ public class Shooter : Singleton<Shooter> {
     [SerializeField] private GameObject prefabPart;
     [SerializeField] private float partSpeed = 10f;
     private AudioSource audioSource;
+
+    public int multiplier;
     private void Start() {
         onShoot.AddListener(Shoot);
         audioSource = GetComponent<AudioSource>();
@@ -49,6 +51,7 @@ public class Shooter : Singleton<Shooter> {
     private void Shoot() {
         Projectile.Spawn(_projectilePrefab, transform.rotation.eulerAngles.z, transform.position + transform.right * _distProj);
         audioSource.PlayOneShot(audioSource.clip);
+        multiplier = 1;
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {

@@ -1294,6 +1294,17 @@ Transform:
   m_Father: {fileID: 312486337}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1515853513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9109534660437878189, guid: ebc7d4b0387c8bd4ba1455f36519bf9d, type: 3}
+  m_PrefabInstance: {fileID: 1840953655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafd9eda52349db4d99ce0075a9ae49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1526997263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,22 +2161,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Affecter by Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 2142522845830163326, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
+      propertyPath: shooter
+      value: 
+      objectReference: {fileID: 1515853513}
     - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
       propertyPath: m_text
       value: 0000
       objectReference: {fileID: 0}
     - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
       propertyPath: m_fontSize
-      value: 20.1
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: e12e45c93ddb728498d71dce9595869a, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b13db8ed2aad7748be28b0ba2834d87, type: 2}
     - target: {fileID: 4633856703622748560, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 5335242204940404574, guid: e12e45c93ddb728498d71dce9595869a, type: 2}
+      objectReference: {fileID: 650562964733687471, guid: 1b13db8ed2aad7748be28b0ba2834d87, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc381adc0a46a44fad825d1d1a156a5, type: 3}
 --- !u!1001 &944706298411291199
