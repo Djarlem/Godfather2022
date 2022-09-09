@@ -39,10 +39,10 @@ public class Shooter : Singleton<Shooter> {
         //    Projectile.Spawn(_projectilePrefab, transform.rotation.eulerAngles.z, transform.position + transform.right * _distProj);
         //    onShoot?.Invoke();
         //}
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Shatter();
-        }
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    Shatter();
+        //}
     }
 
     private void Shoot() {
