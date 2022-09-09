@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SimpleEnemy : MonoBehaviour {
     protected Vector2 direction;
@@ -48,7 +49,7 @@ public class SimpleEnemy : MonoBehaviour {
     {
         float random = UnityEngine.Random.Range(0f, 1f);
         if (prismSpawnChance > random) {
-            SpawnPrism();
+            GameManager.instance.SpawnPrism(instance, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 120f)));
         }
         spriteRenderer.sprite = null;
         audioSource.PlayOneShot(audioSource.clip);
@@ -61,10 +62,6 @@ public class SimpleEnemy : MonoBehaviour {
 
         Destroy(gameObject);
         yield return null;
-    }
-
-    void SpawnPrism() {
-        Instantiate(instance, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 120f)));
     }
 }
 
