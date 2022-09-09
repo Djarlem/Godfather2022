@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class GameManager : MonoBehaviour
 {
@@ -81,5 +83,13 @@ public class GameManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
+    }
+    public void SpawnPrism(Prism instance, Vector3 position, Quaternion quaternion) {
+        StartCoroutine(Spawnprism(instance, position, quaternion));
+    }
+
+    IEnumerator Spawnprism(Prism instance, Vector3 position, Quaternion quaternion) {
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(instance, position, quaternion);
     }
 }

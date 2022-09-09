@@ -14,7 +14,9 @@ public class TrailCollisions : MonoBehaviour {
     }
 
     void Update() {
-        SetColliderPointsFromTrail(myTrail, myCollider);
+        if (myTrail != null && myCollider != null) {
+            SetColliderPointsFromTrail(myTrail, myCollider);
+        }
     }
 
     //Gets from unused pool or creates one if none in pool
@@ -44,7 +46,7 @@ public class TrailCollisions : MonoBehaviour {
     void OnDestroy() {
         if (myCollider != null) {
             myCollider.enabled = false;
-            unusedColliders.Add(myCollider);
+            Destroy(myCollider.gameObject);
         }
     }
 }
