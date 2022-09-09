@@ -1427,6 +1427,13 @@ MonoBehaviour:
   onShoot:
     m_PersistentCalls:
       m_Calls: []
+  canonParts:
+  - {fileID: 21300000, guid: 29a63265b4810ed4385e1ab0bceecef1, type: 3}
+  - {fileID: 21300000, guid: ada347780ead2244ba84f21da7ab55ed, type: 3}
+  - {fileID: 21300000, guid: 3aa04a010d1db384e8340684ac8702e1, type: 3}
+  - {fileID: 21300000, guid: 3f70d8fc3ffbd2742bd338f0a4e502dd, type: 3}
+  prefabPart: {fileID: 6854592962560181683, guid: 42d579736b03d4f4285f51fc4e06edd6, type: 3}
+  partSpeed: 25
 --- !u!82 &1729388612
 AudioSource:
   m_ObjectHideFlags: 0

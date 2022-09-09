@@ -16,7 +16,9 @@ public class Shooter : Singleton<Shooter> {
     Timer _shootTimer;
 
     [SerializeField] private UnityEvent onShoot;
-
+    [SerializeField] private List<Sprite> canonParts = new List<Sprite>();
+    [SerializeField] private GameObject prefabPart;
+    [SerializeField] private float partSpeed = 10f;
     private AudioSource audioSource;
     private void Start() {
         onShoot.AddListener(Shoot);
@@ -37,6 +39,10 @@ public class Shooter : Singleton<Shooter> {
         //    Projectile.Spawn(_projectilePrefab, transform.rotation.eulerAngles.z, transform.position + transform.right * _distProj);
         //    onShoot?.Invoke();
         //}
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Shatter();
+        }
     }
 
     private void Shoot() {
@@ -51,5 +57,17 @@ public class Shooter : Singleton<Shooter> {
 
     public void Hit() {
         //Debug.Log("Hit");
+    }
+
+    public void Shatter()
+    {
+        for (int i = 0; i < canonParts.Count; i++)
+        {
+            var part = Instantiate(prefabPart, transform.position, transform.rotation);
+            part.GetComponent<SpriteRenderer>().sprite = canonParts[i];
+            var direction = Random.insideUnitCircle.normalized;
+            part.GetComponent<Rigidbody2D>().velocity = direction * partSpeed;
+        }
+        gameObject.SetActive(false);
     }
 }
