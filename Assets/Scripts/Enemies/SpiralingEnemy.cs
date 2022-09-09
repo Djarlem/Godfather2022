@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SpiralingEnemy : SimpleEnemy
 {
-    [SerializeField] protected float speedToPlayer;
     // Update is called once per frame
     protected override void Update()
     {
