@@ -48,16 +48,16 @@ MonoBehaviour:
   - {fileID: 3332019676186571163, guid: c7bc327ec6f1c91439e4245595a68ef2, type: 3}
   - {fileID: 2924687708586678488, guid: e7577b03d9a0f5f40bf12ad456149437, type: 3}
   _spawnRate:
-  - 5
-  - 5
+  - 7
+  - 7
   _spawnDist:
   - 6
   - 6
   _stack:
-  - {x: 1, y: 5}
-  - {x: 1, y: 5}
+  - {x: 2, y: 5}
+  - {x: 2, y: 5}
   _speed:
-  - {x: 0.5, y: 2}
+  - {x: 0.3, y: 0.7}
   - {x: 0.1, y: 1}
   _waitBetweenSpawn:
   - 0.3

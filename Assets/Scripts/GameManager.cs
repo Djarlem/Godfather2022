@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] private int life = 3;
-    [SerializeField] private UnityEvent onGameOver;
+    public UnityEvent onGameOver;
     private AudioSource audioSource;
     [SerializeField] private List<GameObject> lifeSprites = new List<GameObject>();
     [SerializeField] private GameObject gameOverScreen;

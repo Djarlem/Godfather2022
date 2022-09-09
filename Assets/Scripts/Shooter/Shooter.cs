@@ -26,6 +26,7 @@ public class Shooter : Singleton<Shooter> {
         _shootTimer = new Timer(this, _shootRate);
         _shootTimer.Start();
         _shootTimer.OnActivate += () => onShoot?.Invoke();
+        GameManager.instance.onGameOver.AddListener(Shatter);
     }
 
     private void Update() {
