@@ -52,11 +52,12 @@ public class Shooter : Singleton<Shooter> {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {
             Hit();
+            collision.gameObject.GetComponent<SimpleEnemy>().Kamikaze();
         }
     }
 
     public void Hit() {
-        //Debug.Log("Hit");
+        GameManager.instance?.LoseLife();
     }
 
     public void Shatter()

@@ -29,10 +29,21 @@ public class GameManager : MonoBehaviour
         numberOfLife = life;
     }
 
+    private void Update()
+    {
+        if (gameOverScreen.activeSelf)
+        {
+            if (Input.anyKeyDown)
+            {
+                RestartGame();
+            }
+        }
+    }
+
     public void LoseLife()
     {
         life--;
-        lifeSprites[life - 1]?.SetActive(false);
+        lifeSprites[life]?.SetActive(false);
         if (life <= 0)
             GameOver();
     }
@@ -54,8 +65,16 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         onGameOver?.Invoke();
+        StartCoroutine(EndGame());
+
+
+    }
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(1);
         Time.timeScale = 0;
         gameOverScreen.SetActive(true);
+        yield return null;
     }
 
     public void RestartGame()

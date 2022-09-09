@@ -15,10 +15,14 @@ public class SimpleEnemy : MonoBehaviour {
     [SerializeField] public float prismSpawnChance;
     [SerializeField] Prism instance;
 
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
     private void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
     // Update is called once per frame
     protected virtual void Update() {
@@ -34,15 +38,16 @@ public class SimpleEnemy : MonoBehaviour {
     }
 
     protected void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log(collision.gameObject.tag);
         if (collision.transform.tag == "Beam") {
             Score.Instance.ScoreUp();
             StartCoroutine(Destruction());
         }
+    }
 
-        if (collision.gameObject.tag == "Player")
-        {
-            GameManager.instance?.LoseLife();
-        }
+    public void Kamikaze()
+    {
+        StartCoroutine(Destruction());
     }
     IEnumerator Destruction()
     {
@@ -51,6 +56,8 @@ public class SimpleEnemy : MonoBehaviour {
             SpawnPrism();
         }
         spriteRenderer.sprite = null;
+        rb.velocity = Vector2.zero;
+        boxCollider.enabled = false;
         audioSource.PlayOneShot(audioSource.clip);
         for (int i = 0; i < explosionSprite.Count; i++)
         {
