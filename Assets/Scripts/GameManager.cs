@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> lifeSprites = new List<GameObject>();
     [SerializeField] private GameObject gameOverScreen;
     private int numberOfLife;
+    public Score score;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -81,8 +83,16 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        //Destroy(Shooter.Instance);
+        //Shooter.Instance.gameObject.SetActive(true);
+        //score.ResetScore();
+        //ResetLife();
+        //SpawnManager.instance.DestroyAll();
+
+        Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
+        //Destroy(gameObject);
     }
     public void SpawnPrism(Prism instance, Vector3 position, Quaternion quaternion) {
         StartCoroutine(Spawnprism(instance, position, quaternion));

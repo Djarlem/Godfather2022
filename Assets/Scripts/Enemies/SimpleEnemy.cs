@@ -41,6 +41,7 @@ public class SimpleEnemy : MonoBehaviour {
     protected void OnTriggerEnter2D(Collider2D collision) {
         Debug.Log(collision.gameObject.tag);
         if (collision.transform.tag == "Beam") {
+            SpawnManager.instance.RemoveEnnemie(this);
             Score.Instance.ScoreUp();
             StartCoroutine(Destruction());
         }

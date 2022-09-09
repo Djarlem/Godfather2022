@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
+    public static SpawnManager instance;
+
     [SerializeField] List<SimpleEnemy> enemiesPrefabs = new List<SimpleEnemy>();
     [SerializeField] float[] _spawnRate;
     [SerializeField] float[] _spawnDist;
@@ -15,6 +17,16 @@ public class SpawnManager : MonoBehaviour {
     [SerializeField] float difficulty;
     Timer _spawnTimerLine;
     Timer _spawnTimerSpirale;
+
+    public List<SimpleEnemy> ennemiesInScene = new List<SimpleEnemy>();
+    void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+    }
+
     private void Start() {
         _spawnTimerLine = new Timer(this, _spawnRate[0]);
         _spawnTimerLine.OnActivate += () => StartCoroutine(SpawnEnemyLine(0));
@@ -38,6 +50,7 @@ public class SpawnManager : MonoBehaviour {
                 Vector3 right = Quaternion.Euler(0, 0, 90) * (transform.position - position).normalized;
                 SimpleEnemy newEnemy = Instantiate(enemiesPrefabs[prefab], transform.position + position + 0.7f * i * right - 0.7f * stack / 2 * right, Quaternion.Euler(0, 0, 0));
                 newEnemy.speed = Mathf.Lerp(_speed[prefab][0], _speed[prefab][1], difficulty);
+                ennemiesInScene.Add(newEnemy);
             }
             yield return null;
         } else {
@@ -45,7 +58,22 @@ public class SpawnManager : MonoBehaviour {
                 SimpleEnemy newEnemy = Instantiate(enemiesPrefabs[prefab], transform.position + position, Quaternion.Euler(0, 0, 0));
                 yield return new WaitForSeconds(_waitBetweenSpawn[prefab]);
                 newEnemy.speedToPlayer = Mathf.Lerp(_speed[prefab][0], _speed[prefab][1], difficulty);
+                ennemiesInScene.Add(newEnemy);
             }
         }
+    }
+
+    public void DestroyAll()
+    {
+        //foreach (var item in ennemiesInScene)
+        //{
+        //    ennemiesInScene.Remove(item);
+        //    Destroy(item);
+        //}
+    }
+
+    public void RemoveEnnemie(SimpleEnemy gameObject)
+    {
+        //ennemiesInScene.Remove(gameObject);
     }
 }
